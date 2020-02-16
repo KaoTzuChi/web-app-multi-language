@@ -1,0 +1,11 @@
+<div id="apiMessageBlock">
+  <div *ngIf="apimessageService.messages.length">
+    <h4>{{ 'label.apimessage' | translate }}&#58;</h4>
+    <a (click)="apimessageService.clear()">{{ 'link.clear' | translate }}</a>
+
+    <br />
+    <ol>
+      <li *ngFor='let message of apimessageService.messages'> {{message}} </li>
+    </ol>
+  </div>
+</div>

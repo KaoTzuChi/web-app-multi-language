@@ -1,0 +1,45 @@
+{
+    "language":"English",    
+    "link":{
+        "home":"Home",
+        "product":"Product",
+        "administrate":"Administrate",
+        "yes":"Yes",
+        "no":"No",
+        "search":"Search",
+        "save":"Save",
+        "savenew":"Save as new data",
+        "cancel":"Cancel",
+        "close":"Close",
+        "replace":"Replace",
+        "delete":"Delete",
+        "insert":"Insert",
+        "copy":"Copy",
+        "update":"Update",
+        "share":"Share",
+        "clear":"Clear",
+        "query":"Query",
+        "duplicate":"Duplicate",
+        "detail":"Detail",
+        "languages":"Languages",
+        "edit":"Edit",
+        "back":"Back",
+        "all":"All",
+        "havenameen":"Having English name",
+        "havenamees":"Having Spanish name",
+        "havenametw":"Having Mandarin-Taiwan name",
+        "havenamecn":"Having Mandarin-China name"
+    },
+    "field":{
+        "radio":"Select",
+        "serialno":"No.",
+        "id":"Identify number",
+        "category":"Category",
+        "name":"Name",
+        "updated":"Updated time",
+        "price":"Price"
+    },
+    "label":{
+        "apimessage":"API access messages"
+    }
+}

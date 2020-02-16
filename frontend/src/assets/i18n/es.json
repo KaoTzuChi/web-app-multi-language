@@ -1,0 +1,46 @@
+{
+  "language":"Español",
+  "link":{
+    "home":"Inicio",
+    "product":"Producto",
+    "administrate":"Administrar",
+    "yes":"Si",
+    "no":"No",
+    "save":"Salvar",
+    "search":"Buscar",
+    "savenew":"Guardar como datos nuevos",
+    "cancel":"Cancelar",
+    "close":"Cerrar",
+    "replace":"Sustituir",
+    "delete":"Borrar",
+    "insert":"Insertar",
+    "copy":"Copiar",
+    "update":"Actualizar",
+    "share":"Compartir",
+    "clear":"Limpiar",
+    "query":"Preguntar",
+    "duplicate":"Duplicar",
+    "detail":"Detalle",
+    "languages":"Idiomas",
+    "edit":"Editar",
+    "back":"Retroceder",
+    "all":"Todos",
+    "havenameen": "Tener nombre inglés",
+    "havenamees": "Tener nombre español",
+    "havenametw": "Tener nombre mandarín-taiwán",
+    "havenamecn": "Tener nombre mandarín-chino"
+  },
+  "field":{
+      "radio":"Seleccionar",
+      "serialno":"Número",
+      "id":"Identificar número",
+      "category":"Categoría",
+      "name":"Nombre",
+      "updated":"Hora actualizada",
+      "price":"Precio"
+  },
+  "label":{
+      "apimessage":"Mensajes de acceso a la API"
+  }
+}
+

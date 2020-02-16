@@ -1,0 +1,37 @@
+<div>
+    <h2>{{ 'link.product' | translate }}&nbsp;:&nbsp;{{ 'link.duplicate' | translate }}</h2>
+    <div *ngIf="product">
+        <mat-form-field>
+          <mat-placeholder>{{ 'field.id' | translate }}&#40;ObjectId&#41;</mat-placeholder>
+          <input matInput [(ngModel)]="product._id" [disabled]="true" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-placeholder>{{ 'field.category' | translate }}&#40;string&#41;</mat-placeholder>
+          <input matInput [(ngModel)]="product.field1" [disabled]="false" />
+        </mat-form-field>
+
+        <div *ngFor="let lang of this.translate.getLangs()">
+          <mat-form-field>
+            <mat-placeholder>{{ 'field.name' | translate }}&#45;{{ lang }}&#40;string&#41;</mat-placeholder>
+            <input matInput [(ngModel)]="product.field2[lang]" [disabled]="true" />
+          </mat-form-field>
+        </div>
+        
+        <mat-form-field>
+          <mat-placeholder>{{ 'field.updated' | translate }}&#40;datetime&#41;</mat-placeholder>
+          <input matInput [(ngModel)]="product.field3" [disabled]="false" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-placeholder>{{ 'field.price' | translate }}&#40;decimal&#41;</mat-placeholder>
+          <input matInput [(ngModel)]="product.field4" [disabled]="false" />
+        </mat-form-field>
+
+      </div>
+      <br /><mat-divider></mat-divider><br />
+    <div>
+      <a (click)="duplicateProduct();" >{{ 'link.savenew' | translate }}</a>&#124; 
+      <a (click)="goBack();" >{{ 'link.back' | translate }}</a>
+    </div>
+</div>   

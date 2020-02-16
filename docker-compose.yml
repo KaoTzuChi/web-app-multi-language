@@ -1,0 +1,89 @@
+version: '3.7' 
+services: 
+    frontend-service:
+      build:
+        context: ./frontend
+        dockerfile: Dockerfile-frontend
+      image: angular:webapp3
+      container_name: webapp3-frontend
+      volumes:
+        - ./frontend:/usr/src/nodeapp3
+      ports: 
+        - "4200:4200"
+      entrypoint:
+        - ng
+        - serve
+        - --host
+        - 0.0.0.0
+      networks:
+        - networktier-app3
+      depends_on:
+        - database-service
+        - backend-service
+      restart: always
+
+    backend-service:      
+      build:
+        context: ./backend
+        dockerfile: Dockerfile-backend
+      image: python:webapp3
+      container_name: webapp3-backend
+      command: python manage.py runserver 0.0.0.0:9900
+      volumes:
+        - ./backend:/code-app3
+      ports:
+        - "9900:9900"
+      networks:
+        - networktier-app3
+      depends_on:
+        - database-service
+      links:
+        - database-service
+      restart: always
+
+    database-service:      
+      image: mongo:4.2.0
+      container_name: webapp3-database
+      environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/dev/null
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=123456789
+        - MONGO_INITDB_DATABASE=admin
+        - MONGO_ROOT_USER=root
+        - MONGO_ROOT_PASS=123456789
+      volumes:
+        - ./data/db:/data/db
+        - ./database/initial-database.js:/data/db/initial-database.js
+      hostname: database-service
+      ports:
+        - "27017:27017"
+      command: --storageEngine wiredTiger
+      networks:
+        - networktier-app3
+      restart: always
+
+    webserver-service:       
+      image: nginx:latest
+      container_name: webapp3-webserver
+      ports:
+        - "5555:6666"
+        - "7777:8888"
+      volumes:
+        - ./webserver/nginx-frontend.conf:/etc/nginx/conf.d/nginx-frontend.conf
+        - ./webserver/nginx-backend.conf:/etc/nginx/conf.d/nginx-backend.conf
+      networks:
+        - networktier-app3
+      depends_on:
+        - database-service
+        - backend-service
+        - frontend-service
+      links:
+        - database-service
+        - backend-service
+        - frontend-service
+      restart: always
+
+networks:
+  networktier-app3:
+    driver: bridge

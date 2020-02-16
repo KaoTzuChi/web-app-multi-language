@@ -1,0 +1,19 @@
+
+
+
+
+
+<router-outlet></router-outlet>
+
+
+
+<div class="product-search" id="productsearch">
+    <strong>{{ 'link.search' | translate }}</strong>&nbsp;&#58;&nbsp;
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle value="0" (click)="goQuery('');">{{ 'link.all' | translate }}</mat-button-toggle>
+        <mat-button-toggle value="1" (click)="goQuery('en');">{{ 'link.havenameen' | translate }}</mat-button-toggle>
+        <mat-button-toggle value="2" (click)="goQuery('es');">{{ 'link.havenamees' | translate }}</mat-button-toggle>
+        <mat-button-toggle value="3" (click)="goQuery('zh-tw');">{{ 'link.havenametw' | translate }}</mat-button-toggle>
+        <mat-button-toggle value="4" (click)="goQuery('zh-cn');">{{ 'link.havenamecn' | translate }}</mat-button-toggle>
+      </mat-button-toggle-group>
+</div>

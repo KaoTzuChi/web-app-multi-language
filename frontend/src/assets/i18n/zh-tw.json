@@ -1,0 +1,47 @@
+{
+  "language":"繁體中文",
+  "link":{
+    "home":"首頁",
+    "product":"產品",
+    "administrate":"管理",
+    "yes":"是",
+    "no":"否",
+    "search":"搜尋",
+    "save":"儲存",
+    "savenew":"儲存為新資料",
+    "cancel":"取消",
+    "close":"關閉",
+    "replace":"置換",
+    "delete":"刪除",
+    "insert":"新增",
+    "copy":"複製",
+    "update":"更新",
+    "share":"分享",
+    "clear":"清除",
+    "query":"查詢",
+    "duplicate":"複製",
+    "detail":"明細",
+    "languages":"語言",
+    "edit":"編輯",
+    "back":"返回",
+    "all":"全部",
+    "havenameen":"有英文名稱",
+    "havenamees":"有西班牙文名稱",
+    "havenametw":"有繁體中文名稱",
+    "havenamecn":"有簡體中文名稱"
+  },
+  "field":{
+        "radio":"選取",
+        "serialno":"序號",
+        "id":"識別碼",
+        "category":"類別",
+        "name":"名稱",
+        "updated":"修改時間",
+        "price":"價格"
+  },
+  "label":{
+      "apimessage":"API存取訊息"
+  }
+}
+    
+  
