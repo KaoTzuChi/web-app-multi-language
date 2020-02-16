@@ -7,13 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-LANGS = ['en','es','zh-tw','zh-cn']
-
 ''' e.g. http://localhost:9900/read_mycollection_bylang/en '''
 @csrf_exempt
 @api_view(['GET'])
 def read_mycollection_bylang(request, language):   
-    global LANGS
     if request.method == 'GET':
         data_list = []
         db_obj = dbutilities.db_util('mycollection', language)
@@ -22,7 +19,7 @@ def read_mycollection_bylang(request, language):
             formated_doc= models.myModel( 
                 dbutilities.getIdString( doc, '_id'),
                 dbutilities.getFieldString( doc, 'field1'),
-                dbutilities.getFieldDict( doc, 'field2', LANGS ),
+                dbutilities.getFieldList( doc, 'field2' ),
                 dbutilities.getFieldDatetime( doc, 'field3'),
                 dbutilities.getFieldDecimal( doc, 'field4')
             )
@@ -35,8 +32,7 @@ def read_mycollection_bylang(request, language):
 ''' e.g. http://localhost:9900/read_mycollection_all '''
 @csrf_exempt
 @api_view(['GET'])
-def read_mycollection_all(request):  
-    global LANGS 
+def read_mycollection_all(request):   
     if request.method == 'GET':
         data_list = []
         db_obj = dbutilities.db_util('mycollection', 'alllang')
@@ -45,7 +41,7 @@ def read_mycollection_all(request):
             formated_doc= models.myModel( 
                 dbutilities.getIdString( doc, '_id'),
                 dbutilities.getFieldString( doc, 'field1'),
-                dbutilities.getFieldDict( doc, 'field2', LANGS ),
+                dbutilities.getFieldList( doc, 'field2' ),
                 dbutilities.getFieldDatetime( doc, 'field3'),
                 dbutilities.getFieldDecimal( doc, 'field4')
             )
@@ -58,7 +54,6 @@ def read_mycollection_all(request):
 ''' e.g. http://localhost:9900/read_mycollection_byid/5e461002d069ba45a5fbe9da '''
 @api_view(['GET'])
 def read_mycollection_byid(request, id):   
-    global LANGS
     if request.method == 'GET':
         formated_doc = None
         db_obj = dbutilities.db_util('mycollection', 'alllang')
@@ -69,7 +64,7 @@ def read_mycollection_byid(request, id):
             formated_doc= models.myModel( 
                 dbutilities.getIdString( doc, '_id'),
                 dbutilities.getFieldString( doc, 'field1'),
-                dbutilities.getFieldDict( doc, 'field2', LANGS ),
+                dbutilities.getFieldList( doc, 'field2' ),
                 dbutilities.getFieldDatetime( doc, 'field3'),
                 dbutilities.getFieldDecimal( doc, 'field4')
             )       
@@ -83,14 +78,13 @@ e.g. http://localhost:9900/create_doc_in_mycollection_return_newone/
 request.data = { 
     "_id": "5d53ca1d72be9fe767779e70", 
     "field1" : "test value 1", 
-    "field2" : {"en":"test value 2", "zh-tw":"test value 3" },
+    "field2" : {"item1":"test value 2", "item2":"test value 3" },
     "field3" : "2020-01-01T00:00:00Z",
-    "field4" : 2.34
+    "field4: : 2.34
 }
 '''
 @api_view(['POST'])
 def create_doc_in_mycollection_return_newone(request):
-    global LANGS
     serialized = api_ser.mySerializer(data = request.data)
     if serialized.is_valid():
         reqId = request.data.get("_id")
@@ -109,7 +103,7 @@ def create_doc_in_mycollection_return_newone(request):
             formated_doc= models.myModel( 
                 dbutilities.getIdString( newdoc, '_id'),
                 dbutilities.getFieldString( newdoc, 'field1'),
-                dbutilities.getFieldDict( newdoc, 'field2', LANGS ),
+                dbutilities.getFieldList( newdoc, 'field2' ),
                 dbutilities.getFieldDatetime( newdoc, 'field3'),
                 dbutilities.getFieldDecimal( newdoc, 'field4')
             )       
@@ -122,16 +116,15 @@ def create_doc_in_mycollection_return_newone(request):
 '''
 e.g. http://localhost:9900/replace_doc_in_mycollection_return_newone/
 request.data = { 
-    "_id": "5e48e8a3e4b170032598bf1a", 
-    "field1" : "test value 1", 
-    "field2" : {"es":"test value es", "zh-cn":"test value cn" },
-    "field3" : "2020-01-01T00:00:00Z",
-    "field4" : 2.34
+    "_id": "5e46533fa8a7194456fbe99b", 
+    "field1": "test value 5", 
+    "field2":{"item1":"test value 6", "item2":"test value 7" },
+    "field3": "2020-08-01T00:00:00Z",
+    "field4: : 4.56
 }
 '''
 @api_view(['POST'])
 def replace_doc_in_mycollection_return_newone(request):
-    global LANGS
     serialized = api_ser.mySerializer(data = request.data)
     if serialized.is_valid():
         reqId = request.data.get("_id")
@@ -150,7 +143,7 @@ def replace_doc_in_mycollection_return_newone(request):
             formated_doc= models.myModel( 
                 dbutilities.getIdString( newdoc, '_id'),
                 dbutilities.getFieldString( newdoc, 'field1'),
-                dbutilities.getFieldDict( newdoc, 'field2', LANGS ),
+                dbutilities.getFieldList( newdoc, 'field2' ),
                 dbutilities.getFieldDatetime( newdoc, 'field3'),
                 dbutilities.getFieldDecimal( newdoc, 'field4')
             )       
@@ -161,7 +154,7 @@ def replace_doc_in_mycollection_return_newone(request):
 
 ''' 
 e.g. http://localhost:9900/delete_doc_in_mycollection_return_count/
-request.data = {"_id": "5e48e8a3e4b170032598bf1b"} 
+request.data = {"_id": "5e46533fa8a7194456fbe99b"} 
 '''
 @api_view(['POST'])
 def delete_doc_in_mycollection_return_count(request):

@@ -16,8 +16,7 @@ export class ProductQueryComponent implements OnInit {
   products: Product[];
   selectedItem: Product;
   displayColumn = ['radio', 'serialno', '_id', 'field1', 'field2', 'field3', 'field4'];
-  search_cond1_exists_lang = '';
-  data_lang = this.translate.currentLang;
+  search_cond1_exists_lang = null;
 
   constructor(
     private productQueryService: ProductQueryService,
@@ -30,12 +29,11 @@ export class ProductQueryComponent implements OnInit {
 
   ngOnInit() {
     this.search_cond1_exists_lang = this.activatedRoute.snapshot.paramMap.get('existslang');
-    this.search_cond1_exists_lang = (this.search_cond1_exists_lang ==null ? '' : this.search_cond1_exists_lang.trim());
+    this.search_cond1_exists_lang = (this.search_cond1_exists_lang ==null ? this.translate.currentLang : this.search_cond1_exists_lang.trim());
     console.log('this.search_cond1_exists_lang='+this.search_cond1_exists_lang);
 
     if( ( this.translate.getLangs().includes(this.search_cond1_exists_lang) )
       &&( this.search_cond1_exists_lang.length>0 ) ){
-        this.data_lang = this.search_cond1_exists_lang;
         this.getProducts_bylang( this.search_cond1_exists_lang );
     }else{
       this.getProducts();

@@ -216,22 +216,6 @@ def getFieldList( doc, key):
                     returndata = doc[key]
     return returndata
 
-def getFieldDict( doc, key, item_names):
-    returndata = {}
-    allnull = False
-    if doc != None:
-        if type(doc) == dict:
-            if doc.get(key) != None:
-                if doc[key] != None:
-                    if type(doc[key]) == dict:
-                        for itemname in item_names:
-                            if (doc[key].get(itemname) != None):
-                                allnull = True
-
-                        if (allnull):
-                            returndata.update(doc[key])
-    return returndata
-    
 def getIdString( doc, key):
     returndata = ''
     if doc != None:

@@ -38,6 +38,7 @@ export class ProductInsertComponent implements OnInit {
   }
 
   insertProduct(){
+    console.log('this.product='+this.product.field1);
     this.productInsertService.insertProduct(this.product).subscribe(() => {
       this.router.navigate(["/product/query"]);
     });

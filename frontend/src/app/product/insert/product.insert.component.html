@@ -14,7 +14,7 @@
         <div *ngFor="let lang of this.translate.getLangs()">
           <mat-form-field>
             <mat-placeholder>{{ 'field.name' | translate }}&#45;{{ lang }}&#40;string&#41;</mat-placeholder>
-            <input matInput [(ngModel)]="product.field2[lang]" [disabled]="true" />
+            <input matInput [(ngModel)]="product.field2[lang]" [disabled]="false" />
           </mat-form-field>
         </div>
        
