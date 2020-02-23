@@ -235,7 +235,7 @@ Finally, in html pages, now we can easily use the format below to get the values
 <p>{{ 'group3' | translate }}</p>
 ```
 
-More details about @ngx-translate, see [@ngx-translate/core](https://www.npmjs.com/package/@ngx-translate/core) and [@ngx-translate/http-loader](https://www.npmjs.com/package/@ngx-translate/http-loader).
+More details about i18n, see [this page](https://www.npmjs.com/package/@ngx-translate/core).
 
 
 ## References
@@ -244,3 +244,5 @@ More details about @ngx-translate, see [@ngx-translate/core](https://www.npmjs.c
 - [pymongo – Python driver for MongoDB](https://api.mongodb.com/python/current/api/pymongo/index.html)
 - [Django REST framework](https://www.django-rest-framework.org/)
 - [Angular docs](https://angular.io/docs)
+- [@ngx-translate/core](https://www.npmjs.com/package/@ngx-translate/core)
+- [@ngx-translate/http-loader](https://www.npmjs.com/package/@ngx-translate/http-loader)
