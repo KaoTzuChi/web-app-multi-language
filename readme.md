@@ -1,12 +1,12 @@
-# Web app with multiple languages: angular(i18n), python(django) and mongodb in docker
+# Web app with multiple languages: Angular(i18n), Python(django) and MongoDB in Docker
 
 ## Version
-- node 12.13.0
-- angular/cli 8.3.14
+- Node 12.13.0
+- Angular/cli 8.3.14
 - @ngx-translate/core@11.0.1
 - @ngx-translate/http-loader@4.0.0
 - Python 3.7.4
-- django 2.2.10
+- Django 2.2.10
 - MongoDB 4.2.0
 - Docker 19.03.5
 - Ubuntu 18.04.3 LTS
